@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "bucket",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--workers",
+                "1",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "5001"
+            ],
+            "justMyCode": false
+        },
+    ]
+}
