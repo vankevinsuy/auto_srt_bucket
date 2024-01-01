@@ -2,6 +2,7 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import pika
 import json
+import os
 
 app = FastAPI()
 app.add_middleware(
@@ -31,7 +32,7 @@ def save_file(file: UploadFile) -> bool:
             bin_file.write(file.file.read())
 
             connection = pika.BlockingConnection(
-                pika.ConnectionParameters(host='auto_srt_pubsub', port=5672))
+                pika.ConnectionParameters(host=os.getenv("PUBSUB_HOSTNAME"), port=5672))
             channel = connection.channel()
             channel.queue_declare(queue='new_file', durable=True)
 

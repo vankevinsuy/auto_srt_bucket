@@ -14,7 +14,10 @@
                 "--port",
                 "5001"
             ],
-            "justMyCode": false
+            "justMyCode": false,
+            "env": {
+                "PUBSUB_HOSTNAME": "localhost"
+            }
         },
     ]
 }
